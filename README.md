@@ -43,6 +43,8 @@ Install ZSH using:
 brew install zsh
 ```
 
+And set it to the default Shell using the following:
+
 ```shell
 chsh -s /bin/zsh
 ```
