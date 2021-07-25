@@ -21,7 +21,7 @@ brew install --cask iterm2
 From now on use Iterm2 as your terminal application!
 Iterm2 is a great interactive terminal that can be customized to look and feel the way you want it to.
 
-Next we will need to install Rust:
+Next, we will need to install Rust:
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -35,7 +35,7 @@ cargo install conveyance
 
 ### Optional
 
-Then set the default shell to ZSH as it is faster than the default BASH shell.
+Set the default shell to ZSH as it is faster than the default BASH shell.
 
 Install ZSH using:
 
