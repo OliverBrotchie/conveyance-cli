@@ -1,3 +1,5 @@
+![Robot Arm](https://image.flaticon.com/icons/png/512/1275/1275579.png)
+
 # Conveyancing CLI
 
 A simple CLI application for conveyancing as a stop-gap measure until the full application has been developed.
