@@ -1,4 +1,4 @@
-![Robot Arm](https://image.flaticon.com/icons/png/512/1275/1275579.png)
+<img href='https://image.flaticon.com/icons/png/512/1275/1275579.png' height="250" width="200" />
 
 # Conveyancing CLI
 
