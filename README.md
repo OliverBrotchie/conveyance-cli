@@ -1,4 +1,4 @@
-<img src='https://image.flaticon.com/icons/png/512/1275/1275579.png' height="250" width="200" />
+<img src='https://image.flaticon.com/icons/png/512/1275/1275579.png' height="250" width="250" />
 
 # Conveyancing CLI
 
