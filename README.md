@@ -1,3 +1,5 @@
+<img src='https://image.flaticon.com/icons/png/512/1275/1275584.png' height="200" width="200" style="margin-bottom:50px" />
+
 # Conveyancing CLI
 
 A simple CLI application for conveyancing as a stop-gap measure until the full application has been developed.
@@ -42,6 +44,8 @@ Install ZSH using:
 ```shell
 brew install zsh
 ```
+
+And set it to the default Shell using the following:
 
 ```shell
 chsh -s /bin/zsh
