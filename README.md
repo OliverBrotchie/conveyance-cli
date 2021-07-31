@@ -20,8 +20,7 @@ Next, install Iterm2 using the following command:
 brew install --cask iterm2
 ```
 
-From now on use Iterm2 as your terminal application!
-Iterm2 is a great interactive terminal that can be customized to look and feel the way you want it to.
+Open Iterm2 and use it by default for all future instructions.
 
 Next, we will need to install Rust:
 
@@ -29,7 +28,7 @@ Next, we will need to install Rust:
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-Just follow the defualt install instructions. When the Conveyancing CLI is finished we will be able to install it using the following:
+When the Conveyancing CLI is finished we will be able to install it using the following:
 
 ```
 cargo install conveyance
