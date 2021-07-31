@@ -20,15 +20,13 @@ Next, install Iterm2 using the following command:
 brew install --cask iterm2
 ```
 
-Open Iterm2 and use it by default for all future instructions.
-
-Next, we will need to install Rust:
+In Iterm2, we will then install the Rust compiler:
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-When the Conveyancing CLI is finished we will be able to install it using the following:
+And to finally to install the Conveyance Cli, paste in the following:
 
 ```
 cargo install conveyance
@@ -44,13 +42,13 @@ Install ZSH using:
 brew install zsh
 ```
 
-And set it to the default Shell using the following:
+Set it to the default Shell using the following:
 
 ```shell
 chsh -s /bin/zsh
 ```
 
-And follow the instructions [here](https://iterm2colorschemes.com/) on how to set a colour scheme!
+Follow the instructions [here](https://iterm2colorschemes.com/) on how to set a colour scheme!
 
 ## Usage
 
