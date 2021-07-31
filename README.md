@@ -2,7 +2,7 @@
 
 # Conveyancing CLI
 
-A simple CLI application for conveyancing as a stop-gap measure until the full application has been developed.
+A simple CLI application for conveyancing as a stop-gap measure until the full application has been developed. This repository is not for public use.
 
 ## Installation
 
