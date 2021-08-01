@@ -2,7 +2,7 @@
 name = "conveyance"
 version = "0.1.0"
 description = "A stop-gap CLI for conveyancing."
-license = ""
+license = "CC-BY-NC-4.0"
 repository = "https://github.com/OliverBrotchie/conveyance-cli"
 keywords = ["word", "docx","xml"]
 categories = ["command-line-utilities","text-processing"]
