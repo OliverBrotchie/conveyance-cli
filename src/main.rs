@@ -27,13 +27,13 @@ struct Args {
 
 fn main() -> Result<(), Box<dyn std::error::Error>>{
     
-    let mut args = Args::from_args();
-    while let Some(file) = args.file.pop() { 
-        let mut archive = zip::ZipArchive::new(fs::File::open(file)
+    let args = Args::from_args();
+    for i in 0..args.file.len() { 
+        let mut archive = zip::ZipArchive::new(fs::File::open(&args.file[i])
             .expect("Error: Document was not found, please specify a valid path."))?;
         let json = merge_json(&args.json)?;
         
-        let output = std::fs::File::create(args.output.pop().expect("Error: Not enough output paths for number of specified input files.")).unwrap();
+        let output = std::fs::File::create(&args.output[i]).expect("Error: Could not create file.");
         let options = FileOptions::default();
         let mut zip = ZipWriter::new(output);
         let mut buf = Vec::new();
