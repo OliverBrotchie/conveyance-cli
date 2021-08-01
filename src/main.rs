@@ -14,13 +14,13 @@ use zip::write::{FileOptions, ZipWriter};
 #[derive(StructOpt, Debug)]
 #[structopt(name = "basic")]
 struct Args {
-    /// Word files
+    /// The path to the desired word file.
     #[structopt(short, long, parse(from_os_str))]
     file: PathBuf,
-    /// Json File
+    /// The path/s to one or more JSON files containing the variables.
     #[structopt(short, long, parse(from_os_str))]
     json: Vec<PathBuf>,
-    /// Output Word File
+    /// The name/path of the output word file.
     #[structopt(short, long, parse(from_os_str))]
     output: PathBuf,
 }
@@ -103,7 +103,7 @@ fn interpolate_json(buf:Vec<u8>, json:&Map<String,Value>) -> Result<Vec<u8>, Box
                     
                     // Test each json value
                     json.iter().for_each(|(key,value)| {
-                        if &text == key.trim() {
+                        if text == key.trim() {
                             // Write in a text tag
                             writer.write_event(Event::Start(BytesStart::borrowed(e, e.name().len())))
                                 .expect("Error whilst writing value");
@@ -131,7 +131,7 @@ fn interpolate_json(buf:Vec<u8>, json:&Map<String,Value>) -> Result<Vec<u8>, Box
 
 /// Read in and merge all specified Json files.
 fn merge_json(paths:Vec<PathBuf>)->Result<Map<String,Value>, Box<dyn std::error::Error>> {
-    
+
     let mut json = Map::new();
     for p in paths {
         json.extend(

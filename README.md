@@ -54,6 +54,18 @@ Follow the instructions [here](https://iterm2colorschemes.com/) on how to set a 
 
 To use the program you will pass a series of files, flags and inputs to the application via the Iterm2 terminal.
 
+**Example**
+
+```shell
+conveyance --file example.docx --json example.json example-2.json --output new-document.docx
+```
+
+**OR**
+
+```shell
+conveyance -f example.docx -j example.json example-2.json -o new-document.docx
+```
+
 If you are confused about how to use the program at any point, type in the following:
 
 ```shell
