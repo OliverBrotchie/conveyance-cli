@@ -17,5 +17,6 @@ Cargo.lock
 *.doc
 *.docx
 *.json
+**/*.Ds_Store
 
 /example
