@@ -1,6 +1,6 @@
 [package]
 name = "conveyance"
-version = "0.1.1"
+version = "0.1.2"
 description = "A stop-gap CLI for conveyancing."
 license = "CC-BY-NC-4.0"
 repository = "https://github.com/OliverBrotchie/conveyance-cli"
