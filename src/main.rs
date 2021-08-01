@@ -14,13 +14,13 @@ use zip::write::{FileOptions, ZipWriter};
 #[derive(StructOpt, Debug)]
 #[structopt(name = "basic")]
 struct Args {
-    /// The path to the desired word file.
+    /// The path/s to the desired word file/s.
     #[structopt(short, long, parse(from_os_str))]
     file: Vec<PathBuf>,
     /// The path/s to one or more JSON files containing the variables.
     #[structopt(short, long, parse(from_os_str))]
     json: Vec<PathBuf>,
-    /// The name/path of the output word file.
+    /// The name/paths of the output word file/s.
     #[structopt(short, long, parse(from_os_str))]
     output: Vec<PathBuf>,
 }
