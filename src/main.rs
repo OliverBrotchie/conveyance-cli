@@ -16,55 +16,58 @@ use zip::write::{FileOptions, ZipWriter};
 struct Args {
     /// The path to the desired word file.
     #[structopt(short, long, parse(from_os_str))]
-    file: PathBuf,
+    file: Vec<PathBuf>,
     /// The path/s to one or more JSON files containing the variables.
     #[structopt(short, long, parse(from_os_str))]
     json: Vec<PathBuf>,
     /// The name/path of the output word file.
     #[structopt(short, long, parse(from_os_str))]
-    output: PathBuf,
+    output: Vec<PathBuf>,
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>>{
     
-    let args = Args::from_args();
-    let mut archive = zip::ZipArchive::new(fs::File::open(args.file)
-        .expect("Error: Document was not found, please specify a valid path."))?;
-    let json = merge_json(args.json)?;
-    
-    let output = std::fs::File::create(args.output).unwrap();
-    let options = FileOptions::default();
-    let mut zip = ZipWriter::new(output);
-    let mut buf = Vec::new();
+    let mut args = Args::from_args();
+    while let Some(file) = args.file.pop() { 
+        let mut archive = zip::ZipArchive::new(fs::File::open(file)
+            .expect("Error: Document was not found, please specify a valid path."))?;
+        let json = merge_json(&args.json)?;
+        
+        let output = std::fs::File::create(args.output.pop().expect("Error: Not enough output paths for number of specified input files.")).unwrap();
+        let options = FileOptions::default();
+        let mut zip = ZipWriter::new(output);
+        let mut buf = Vec::new();
 
-    // Loop through files
-    for i in 0..archive.len(){
+        // Loop through files
+        for i in 0..archive.len(){
 
-        let mut file = archive.by_index(i)?;
-        let outpath = match file.enclosed_name() {
-            Some(path) => path.to_owned(),
-            None => continue,
-        };
+            let mut file = archive.by_index(i)?;
+            let outpath = match file.enclosed_name() {
+                Some(path) => path.to_owned(),
+                None => continue,
+            };
 
-        // Create Directories
-        if (&*file.name()).ends_with('/') {
-            zip.add_directory(outpath.into_os_string().into_string().unwrap(), Default::default())?;
-        } else {
-            
-            // Read the file into a buffer
-            file.read_to_end(&mut buf)?;
-            if file.name() == "word/document.xml" {
-                buf = interpolate_json(buf, &json)?;
+            // Create Directories
+            if (&*file.name()).ends_with('/') {
+                zip.add_directory(outpath.into_os_string().into_string().unwrap(), Default::default())?;
+            } else {
+                
+                // Read the file into a buffer
+                file.read_to_end(&mut buf)?;
+                if file.name() == "word/document.xml" {
+                    buf = interpolate_json(buf, &json)?;
+                }
+
+                // Write the buffer into the file
+                zip.start_file(outpath.into_os_string().into_string().unwrap(), options)?;
+                zip.write_all(&buf)?;
+                buf.clear();
             }
-
-            // Write the buffer into the file
-            zip.start_file(outpath.into_os_string().into_string().unwrap(), options)?;
-            zip.write_all(&buf)?;
-            buf.clear();
         }
-    }
 
-    zip.finish()?;
+        zip.finish()?;
+    }
+    
     Ok(())
 }
 
@@ -130,7 +133,7 @@ fn interpolate_json(buf:Vec<u8>, json:&Map<String,Value>) -> Result<Vec<u8>, Box
 }
 
 /// Read in and merge all specified Json files.
-fn merge_json(paths:Vec<PathBuf>)->Result<Map<String,Value>, Box<dyn std::error::Error>> {
+fn merge_json(paths:&[PathBuf])->Result<Map<String,Value>, Box<dyn std::error::Error>> {
 
     let mut json = Map::new();
     for p in paths {
