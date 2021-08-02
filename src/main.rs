@@ -12,7 +12,7 @@ use zip::write::{FileOptions, ZipWriter};
 
 /// Arguments
 #[derive(StructOpt, Debug)]
-#[structopt(name = "basic")]
+#[structopt(name = "Conveyancing CLI")]
 struct Args {
     /// The path/s to the desired word file/s.
     #[structopt(short, long, parse(from_os_str))]
