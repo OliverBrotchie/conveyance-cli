@@ -2,7 +2,7 @@
 
 # Conveyancing CLI
 
-Fill out word document merge fields with JSON data.
+Fill out word document fields with JSON data.
 
 ## Installation
 
