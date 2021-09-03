@@ -2,80 +2,33 @@
 
 # Conveyancing CLI
 
-A simple CLI application for conveyancing as a stop-gap measure until the full application has been developed. This repository is not for public use and installation instructions are spesific to the client.
+Fill out word document merge fields with JSON data.
 
 ## Installation
-
-Open up the 'terminal' application and paste the following into it:
-
-```shell
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-This will install the 'brew' MacOS package manager. Brew is a simple and safe way to install and manage programs from the command line.
-
-Next, install Iterm2 using the following command:
-
-```shell
-brew install --cask iterm2
-```
-
-In Iterm2, we will then install the Rust compiler:
 
 ```shell
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-And to finally to install the Conveyance Cli, paste in the following:
-
 ```
 cargo install conveyance
 ```
 
-### Optional
-
-Set the default shell to ZSH as it is faster than the default BASH shell.
-
-Install ZSH using:
-
-```shell
-brew install zsh
-```
-
-Set it to the default Shell using the following:
-
-```shell
-chsh -s /bin/zsh
-```
-
-Follow the instructions [here](https://iterm2colorschemes.com/) on how to set a colour scheme!
-
 ## Usage
 
-To use the program you will pass a series of files, flags and inputs to the application via the Iterm2 terminal.
-
-**Example**
 
 ```shell
-conveyance --file example.docx --json example.json example-2.json --output new-document.docx
+conveyance --file example.docx --json example.json --output new-document.docx
 ```
 
 **OR**
 
 ```shell
-conveyance -f example.docx -j example.json example-2.json -o new-document.docx
+conveyance -f example.docx -j example.json -o new-document.docx
 ```
 
 If you are confused about how to use the program at any point, type in the following:
 
 ```shell
-conveyance -h
-```
-
-**OR**
-
-```shell
 conveyance --help
 ```
-
-**TODO: Write documentation!**
